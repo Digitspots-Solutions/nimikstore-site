@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nimikstore - Where Style Meets Creativity</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #050505;
+            --color-accent: #50ff11;
+            --color-bg: #F8F8F8;
+            --color-text: #0A0A0A;
+            --color-surface: #202020;
+            --color-secondary-accent: #f8130f;
+            --font-display: Anton;
+            --font-body: Figtree;
+            --border-radius: 6px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body), sans-serif;
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-display), sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(248, 248, 248, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display), sans-serif;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: var(--color-text);
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            right: -100%;
+            width: 300px;
+            height: calc(100vh - 70px);
+            background: var(--color-bg);
+            box-shadow: -4px 4px 0 rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            z-index: 999;
+            padding: 2rem;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu ul li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-menu ul a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: block;
+            padding: 0.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mobile-menu ul a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Hero Section */
+        #hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+            font-weight: 500;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            font-weight: 300;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: var(--border-radius);
+            box-shadow: 6px 6px 0 var(--color-secondary-accent);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            font-size: 1rem;
+        }
+
+        .cta-btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 4px 4px 0 var(--color-secondary-accent);
+        }
+
+        .sticker-badge {
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            background: var(--color-secondary-accent);
+            color: white;
+            padding: 1rem 1.5rem;
+            transform: rotate(12deg);
+            font-family: var(--font-display), sans-serif;
+            font-size: 1.2rem;
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+            border: 3px solid white;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 5%;
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
+        section:nth-child(5) { animation-delay: 0.4s; }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 3rem;
+            color: var(--color-primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: var(--color-accent);
+            box-shadow: 3px 3px 0 var(--color-secondary-accent);
+        }
+
+        /* About Section */
+        #about {
+            background: white;
+        }
+
+        .about-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: 8px 8px 0 var(--color-accent);
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        /* Services Section */
+        #services {
+            background: var(--color-surface);
+            color: white;
+        }
+
+        #services .section-title {
+            color: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 2px solid var(--color-accent);
+            box-shadow: 4px 4px 0 rgba(80, 255, 17, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--color-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--color-accent);
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--color-accent);
+            font-family: Georgia, serif;
+            line-height: 1;
+            opacity: 0.3;
+        }
+
+        .testimonial-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--color-primary);
+            font-style: normal;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--color-primary);
+            color: white;
+            text-align: center;
+        }
+
+        #contact .section-title {
+            color: white;
+        }
+
+        #contact .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 2rem;
+            border-radius: var(--border-radius);
+            border: 2px solid var(--color-accent);
+            box-shadow: 4px 4px 0 rgba(80, 255, 17, 0.3);
+        }
+
+        .contact-item h3 {
+            font-size: 1rem;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--color-accent);
+        }
+
+        .contact-item p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: var(--border-radius);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float::before {
+            content: '📱';
+            font-size: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-surface);
+            color: white;
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        footer p {
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            section {
+                padding: 60px 5%;
+            }
+
+            .about-split {
+                gap: 2rem;
+            }
+
+            .sticker-badge {
+                top: 15%;
+                right: 5%;
+                font-size: 1rem;
+                padding: 0.8rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            section {
+                padding: 48px 5%;
+            }
+
+            .about-split {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image img {
+                height: 350px;
+            }
+
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+            }
+
+            .sticker-badge {
+                display: none;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-float::before {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#hero" class="logo">NIMIKSTORE</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <section id="hero">
+        <div class="hero-bg">
+            <img src="https://images.pexels.com/photos/13532891/pexels-photo-13532891.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Nimikstore Fashion">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>NIMIKSTORE</h1>
+            <p class="hero-tagline">Where Style Meets Creativity</p>
+            <p>Discover unique fashion pieces and creative designs that express your personality. From trendy outfits to custom creative designs, we bring your fashion vision to life in Lokoja.</p>
+            <a href="#contact" class="cta-btn">Get Started</a>
+        </div>
+        <div class="sticker-badge">FRESH STYLES</div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-split">
+                <div class="about-image">
+                    <img src="https://images.pexels.com/photos/32178964/pexels-photo-32178964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Nimikstore Studio">
+                </div>
+                <div class="about-content">
+                    <p>Nimikstore is Lokoja's premier destination for fashion and creative design. We specialize in curating stylish clothing, accessories, and offering custom creative design services that help you stand out. Our passion is transforming your fashion ideas into reality, whether you're looking for ready-to-wear pieces or bespoke designs tailored just for you.</p>
+                    <p>Located at Olympic Hotel, Obajana, Kogi State, we serve fashion-forward individuals across Lokoja and beyond with quality, creativity, and exceptional customer service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Fashion Retail</h3>
+                    <p>Browse our curated collection of trendy clothing, accessories, and fashion pieces for every occasion. From casual wear to statement outfits, find styles that speak to you.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Custom Design Services</h3>
+                    <p>Bring your unique fashion vision to life with our creative design services. We work with you to create custom outfits, personalized accessories, and bespoke pieces that reflect your individual style.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Styling Consultation</h3>
+                    <p>Not sure what works for you? Our fashion experts provide personalized styling advice to help you discover looks that complement your personality and body type.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Alterations & Tailoring</h3>
+                    <p>Perfect fit guaranteed. We offer professional alteration and tailoring services to ensure every piece fits you flawlessly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>Nimikstore transformed my wardrobe! The custom designs are absolutely stunning and the quality is exceptional. I always get compliments whenever I wear their pieces.</p>
+                    <p class="testimonial-author">— Blessing A., Lokoja</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>Best fashion store in Lokoja! The team really understands style and they take time to ensure you get exactly what you want. Highly recommended!</p>
+                    <p class="testimonial-author">— Chioma O.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>From ready-made to custom designs, Nimikstore delivers excellence every time. Their creative designs are unique and their customer service is top-notch.</p>
+                    <p class="testimonial-author">— David M.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>I love how they bring my fashion ideas to life. Professional, creative, and always on point. Nimikstore is my go-to for all things fashion.</p>
+                    <p class="testimonial-author">— Faith J., Kogi State</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Visit Us Today</h2>
+            <div class="contact-content">
+                <p>Ready to elevate your style? Visit Nimikstore at Olympic Hotel, Obajana, Kogi State, or reach out to us today. Whether you're looking for the perfect outfit or want to create something completely unique, we're here to help you express yourself through fashion.</p>
+                <p>Open for business and ready to serve you. Call us, send a WhatsApp message, or visit our store in Lokoja. Let's create something beautiful together!</p>
+                <a href="https://wa.me/2348164344034" class="whatsapp-btn">Message Us on WhatsApp</a>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Phone</h3>
+                    <a href="tel:08164344034">08164344034</a>
+                </div>
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <a href="mailto:info@nimikstore.com">info@nimikstore.com</a>
+                </div>
+                <div class="contact-item">
+                    <h3>Location</h3>
+                    <p>Olympic Hotel, Obajana, Kogi State, Lokoja, Nigeria</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/2348164344034" class="whatsapp-float" aria-label="Contact us on WhatsApp"></a>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Nimikstore. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenuBtn.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
