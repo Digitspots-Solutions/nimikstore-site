@@ -1,0 +1,49 @@
+{
+  "businessName": "Nimikstore",
+  "industry": "Fashion and Creative Design",
+  "tone": "warm, stylish, and confident",
+  "tagline": "Where Style Meets Creativity",
+  "sections": [
+    {
+      "id": "hero",
+      "name": "Hero",
+      "copy": "Welcome to Nimikstore - Where Style Meets Creativity. Discover unique fashion pieces and creative designs that express your personality. From trendy outfits to custom creative designs, we bring your fashion vision to life in Lokoja.",
+      "imagePrompt": "A vibrant Nigerian fashion boutique showcase with elegant African print fabrics, modern clothing displays, warm golden lighting, and stylish mannequins wearing contemporary fashion pieces, shot in a luxurious boutique setting in Lokoja, professional photography, high-end retail atmosphere",
+      "layout": "centered"
+    },
+    {
+      "id": "about",
+      "name": "About Us",
+      "copy": "Nimikstore is Lokoja's premier destination for fashion and creative design. We specialize in curating stylish clothing, accessories, and offering custom creative design services that help you stand out. Our passion is transforming your fashion ideas into reality, whether you're looking for ready-to-wear pieces or bespoke designs tailored just for you. Located at Olympic Hotel, Obajana, Kogi State, we serve fashion-forward individuals across Lokoja and beyond with quality, creativity, and exceptional customer service.",
+      "imagePrompt": "Modern Nigerian fashion studio interior with fabric swatches, design sketches on walls, sewing equipment, colorful African textiles neatly arranged, bright natural lighting through large windows, professional creative workspace in Lokoja, warm and inviting atmosphere",
+      "layout": "split"
+    },
+    {
+      "id": "services",
+      "name": "Our Services",
+      "copy": "Fashion Retail - Browse our curated collection of trendy clothing, accessories, and fashion pieces for every occasion. From casual wear to statement outfits, find styles that speak to you.\n\nCustom Design Services - Bring your unique fashion vision to life with our creative design services. We work with you to create custom outfits, personalized accessories, and bespoke pieces that reflect your individual style.\n\nStyling Consultation - Not sure what works for you? Our fashion experts provide personalized styling advice to help you discover looks that complement your personality and body type.\n\nAlterations & Tailoring - Perfect fit guaranteed. We offer professional alteration and tailoring services to ensure every piece fits you flawlessly.",
+      "imagePrompt": "A collage showcasing Nigerian fashion services: clothing racks with colorful garments, a designer working on custom fabric, fashion consultation session, and tailoring work in progress, vibrant colors, professional fashion business environment in Nigeria",
+      "layout": "grid"
+    },
+    {
+      "id": "testimonials",
+      "name": "What Our Clients Say",
+      "copy": "\"Nimikstore transformed my wardrobe! The custom designs are absolutely stunning and the quality is exceptional. I always get compliments whenever I wear their pieces.\" - Blessing A., Lokoja\n\n\"Best fashion store in Lokoja! The team really understands style and they take time to ensure you get exactly what you want. Highly recommended!\" - Chioma O.\n\n\"From ready-made to custom designs, Nimikstore delivers excellence every time. Their creative designs are unique and their customer service is top-notch.\" - David M.\n\n\"I love how they bring my fashion ideas to life. Professional, creative, and always on point. Nimikstore is my go-to for all things fashion.\" - Faith J., Kogi State",
+      "imagePrompt": "Happy Nigerian customers wearing beautiful custom-designed outfits, smiling and confident, diverse group of fashionable people, vibrant African prints and modern styles, professional photography, bright natural lighting, fashion testimonial photoshoot",
+      "layout": "cards"
+    },
+    {
+      "id": "contact",
+      "name": "Visit Us Today",
+      "copy": "Ready to elevate your style? Visit Nimikstore at Olympic Hotel, Obajana, Kogi State, or reach out to us today. Whether you're looking for the perfect outfit or want to create something completely unique, we're here to help you express yourself through fashion.\n\nOpen for business and ready to serve you. Call us, send a WhatsApp message, or visit our store in Lokoja. Let's create something beautiful together!",
+      "imagePrompt": "Welcoming Nigerian fashion boutique storefront at Olympic Hotel area, warm lighting, inviting entrance with fashion displays visible through windows, Lokoja/Kogi State setting, professional retail photography, approachable and stylish atmosphere",
+      "layout": "centered"
+    }
+  ],
+  "contact": {
+    "phone": "08164344034",
+    "email": "info@nimikstore.com",
+    "address": "Olympic Hotel, Obajana, Kogi State, Lokoja, Nigeria",
+    "whatsapp": "https://wa.me/2348164344034"
+  }
+}
